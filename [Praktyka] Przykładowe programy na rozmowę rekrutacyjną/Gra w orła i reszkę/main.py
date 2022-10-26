@@ -5,7 +5,6 @@ from time import sleep
 throw = randint(0,1)
 playerGuess = 1
 computerGuess = randint(0,1)
-validMode = True
 
 # w przyszłości spróbować zamienić te funkcje w jedną
 def playerOneThrows():
@@ -32,19 +31,22 @@ def playerVsPlayer():
 def playerVsComputer():
     print("Player vs computer")
 
+def mainMenu(mode):
+    validMode = True
+    while validMode:
+        if mode == 1:
+            playerVsPlayer()
+            validMode = False
+        elif mode == 2:
+            playerVsComputer()
+            validMode = False
+        else:
+            validMode = True
+            gameMode = input("Select valid game mode\n")
+
+
 selectMode = input("Heads or Tails\nSelect game mode:\n1. Player vs Player\n2. Player vs computer\n")
 gameMode = int(selectMode)
+mainMenu(gameMode)
 
-
-# zamienić tę pętlę w funkcję
-while validMode:
-    if gameMode == 1:
-        playerVsPlayer()
-        validMode = False
-    elif gameMode == 2:
-        playerVsComputer()
-        validMode = False
-    else:
-        validMode = True
-        gameMode = input("Select valid game mode\n")
 
