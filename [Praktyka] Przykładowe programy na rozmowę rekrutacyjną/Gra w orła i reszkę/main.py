@@ -5,6 +5,7 @@ from time import sleep
 throw = randint(0,1)
 playerGuess = 1
 computerGuess = randint(0,1)
+computerPoints = 0
 
 # w przyszłości spróbować zamienić te funkcje w jedną
 def playerOneThrows():
@@ -26,7 +27,21 @@ def computerThrows():
         print("Tails")
 
 def playerVsPlayer():
-    print("Player vs Player")
+    playerOnePoints = 0
+    playerTwoPoints = 0
+
+    while playerOnePoints != 3 or playerTwoPoints != 3:
+        playerOneThrows()
+        decision = input("Player vs Player\n[Player 1] Select:\n1. Heads\n2. Tails\n")
+        decisionInt = int(decision)
+        if throw == decisionInt:
+            print("nie zgadłeś")
+            playerOnePoints =+ 0
+            print("Player one points = ", playerOnePoints, "Player two points = ", playerTwoPoints)
+        else:
+            print("zgadłeś")
+            playerOnePoints =+ 1
+            print("Player one points = ", playerOnePoints, "\nPlayer two points = ", playerTwoPoints)
 
 def playerVsComputer():
     print("Player vs computer")
@@ -48,5 +63,3 @@ def mainMenu(mode):
 selectMode = input("Heads or Tails\nSelect game mode:\n1. Player vs Player\n2. Player vs computer\n")
 gameMode = int(selectMode)
 mainMenu(gameMode)
-
-
