@@ -2,64 +2,39 @@
 from random import randint
 from time import sleep
 
-throw = randint(0,1)
-playerGuess = 1
-computerGuess = randint(0,1)
+playerPoints = 0
 computerPoints = 0
+end = True
 
-# w przyszłości spróbować zamienić te funkcje w jedną
-def playerOneThrows():
-    if throw == 0:
-        print("Heads")
-    if throw == 1:
-        print("Tails")
+def delay():
+    for i in range(3):
+        print(i+1, end="")
+        sleep(0.2)
+        for j in range(3):
+            print(".", end="")
+            sleep(0.25)
+        print("\n", end="")
 
-def playerTwoThrows():
-    if throw == 0:
-        print("Heads")
-    if throw == 1:
-        print("Tails")
+def throws():
+    global playerPoints
+    global end
+    throw = randint(1, 2)
+    decision = input("Your type:\n1. Heads\n2. Tails\n")
+    decisionInt = int(decision)
+    #    delay()
+    print(throw)
+    if throw == decisionInt:
+        print("You guesed:", throw)
+        playerPoints += 1
+        print("Your points:", playerPoints)
+        del throw
+        if playerPoints == 3:
+            return 0
+        throws()
+    else:
+        print("You didn't guessed", throw)
+        print("Your points:", playerPoints)
+        del throw
+        throws()
 
-def computerThrows():
-    if throw == 0:
-        print("Heads")
-    if throw == 1:
-        print("Tails")
-
-def playerVsPlayer():
-    playerOnePoints = 0
-    playerTwoPoints = 0
-
-    while playerOnePoints != 3 or playerTwoPoints != 3:
-        playerOneThrows()
-        decision = input("Player vs Player\n[Player 1] Select:\n1. Heads\n2. Tails\n")
-        decisionInt = int(decision)
-        if throw == decisionInt:
-            print("nie zgadłeś")
-            playerOnePoints =+ 0
-            print("Player one points = ", playerOnePoints, "Player two points = ", playerTwoPoints)
-        else:
-            print("zgadłeś")
-            playerOnePoints =+ 1
-            print("Player one points = ", playerOnePoints, "\nPlayer two points = ", playerTwoPoints)
-
-def playerVsComputer():
-    print("Player vs computer")
-
-def mainMenu(mode):
-    validMode = True
-    while validMode:
-        if mode == 1:
-            playerVsPlayer()
-            validMode = False
-        elif mode == 2:
-            playerVsComputer()
-            validMode = False
-        else:
-            validMode = True
-            gameMode = input("Select valid game mode\n")
-
-
-selectMode = input("Heads or Tails\nSelect game mode:\n1. Player vs Player\n2. Player vs computer\n")
-gameMode = int(selectMode)
-mainMenu(gameMode)
+throws()
