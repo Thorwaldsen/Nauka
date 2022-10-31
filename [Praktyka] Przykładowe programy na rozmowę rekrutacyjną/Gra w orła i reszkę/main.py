@@ -25,12 +25,12 @@ def throws():
     if throw == decisionInt:
         print("You guesed:", throw)
         playerPoints += 1
-        print("Your points:", playerPoints,"\n")
+        print("Your points:", playerPoints)
         print("Computer points:", computerPoints,"\n")
         del throw
     else:
         print("You didn't guessed", throw)
-        print("Your points:", playerPoints,"\n")
+        print("Your points:", playerPoints)
         print("Computer points:", computerPoints,"\n")
         del throw
 
@@ -56,10 +56,14 @@ def mainMenu():
     input("Welcome to Heads or Tails\nPress enter to continue\n")
     global end
     while end:
-        if playerPoints != 3 or computerPoints != 3:
+        if playerPoints != 3 and computerPoints != 3:
             throws()
             computerThrows()
-        else:
+        elif (playerPoints == 3 and computerPoints != 3) or (playerPoints != 3 and computerPoints == 3):
             end = False
+            if playerPoints > computerPoints:
+                print("Wygrałeś!")
+            else:
+                print("Przegrałeś!")
 
 mainMenu()
