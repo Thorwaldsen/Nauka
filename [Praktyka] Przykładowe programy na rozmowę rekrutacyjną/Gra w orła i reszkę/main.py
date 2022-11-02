@@ -53,17 +53,21 @@ def computerThrows():
         del throw
 
 def mainMenu():
-    input("Welcome to Heads or Tails\nPress enter to continue\n")
+    gameMode = input("Welcome to Heads or Tails\n1. Player vs Computer\n2. Player vs Player\n")
+    game = int(gameMode)
     global end
-    while end:
-        if playerPoints != 3 and computerPoints != 3:
-            throws()
-            computerThrows()
-        elif (playerPoints == 3 and computerPoints != 3) or (playerPoints != 3 and computerPoints == 3):
-            end = False
-            if playerPoints > computerPoints:
-                print("Wygrałeś!")
-            else:
-                print("Przegrałeś!")
+    if game == 1:
+        while end:
+            if playerPoints != 3 and computerPoints != 3:
+                throws()
+                computerThrows()
+            elif (playerPoints == 3 and computerPoints != 3) or (playerPoints != 3 and computerPoints == 3):
+                end = False
+                if playerPoints > computerPoints:
+                    print("Wygrałeś!")
+                else:
+                    print("Przegrałeś!")
+    elif game == 2:
+        print("Player vs Player")
 
 mainMenu()
