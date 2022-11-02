@@ -34,6 +34,9 @@ def throws():
         print("Computer points:", computerPoints,"\n")
         del throw
 
+def playerTwoThrows():
+    print("Player 2 throws")
+
 def computerThrows():
     global computerPoints
     computerChoise = randint(1, 2)
@@ -68,6 +71,9 @@ def mainMenu():
                 else:
                     print("Przegrałeś!")
     elif game == 2:
-        print("Player vs Player")
+        while end:
+            throws()
+            playerTwoThrows()
+            end = False
 
 mainMenu()
