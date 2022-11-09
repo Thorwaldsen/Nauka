@@ -4,6 +4,8 @@ from time import sleep
 
 playerPoints = 0
 computerPoints = 0
+playerOnePoints = 0
+playerTwoPoints = 0
 end = True
 
 def delay():
@@ -18,9 +20,9 @@ def delay():
 def throws():
     global playerPoints
     throw = randint(1, 2)
-    decision = input("Your turn. Type:\n1. Heads\n2. Tails\n")
+    decision = input("Player one turn. Type:\n1. Heads\n2. Tails\n")
     decisionInt = int(decision)
-    print("Your type:", throw)
+    print("Your type:", decision)
     #    delay()
     if throw == decisionInt:
         print("You guesed:", throw)
@@ -34,8 +36,43 @@ def throws():
         print("Computer points:", computerPoints,"\n")
         del throw
 
+def playerOneThrows():
+    global playerOnePoints
+    throw = randint(1, 2)
+    decision = input("Player one turn. Type:\n1. Heads\n2. Tails\n")
+    decisionInt = int(decision)
+    print("Your type:", decision)
+    #    delay()
+    if throw == decisionInt:
+        print("You guesed:", throw)
+        playerOnePoints += 1
+        print("Player Two points:", playerTwoPoints)
+        print("Player one points:", playerOnePoints,"\n")
+        del throw
+    else:
+        print("You didn't guessed", throw)
+        print("Player two points:", playerTwoPoints)
+        print("Player one points:", playerOnePoints,"\n")
+        del throw
+
 def playerTwoThrows():
-    print("Player 2 throws")
+    global playerTwoPoints
+    throw = randint(1, 2)
+    decision = input("Player Two turn. Type:\n1. Heads\n2. Tails\n")
+    decisionInt = int(decision)
+    print("Your type:", decision)
+    #    delay()
+    if throw == decisionInt:
+        print("You guesed:", throw)
+        playerTwoPoints += 1
+        print("Player Two points:", playerTwoPoints)
+        print("Player one points:", playerOnePoints,"\n")
+        del throw
+    else:
+        print("You didn't guessed", throw)
+        print("Player two points:", playerTwoPoints)
+        print("Player one points:", playerOnePoints,"\n")
+        del throw
 
 def computerThrows():
     global computerPoints
@@ -72,8 +109,14 @@ def mainMenu():
                     print("Przegrałeś!")
     elif game == 2:
         while end:
-            throws()
-            playerTwoThrows()
-            end = False
+            if playerOnePoints != 3 and playerTwoPoints != 3:
+                playerOneThrows()
+                playerTwoThrows()
+            elif (playerOnePoints == 3 and playerTwoPoints != 3) or (playerOnePoints != 3 and playerTwoPoints == 3):
+                end = False
+                if playerOnePoints > playerTwoPoints:
+                    print("Player one wins!")
+                else:
+                    print("Player two wins!")
 
 mainMenu()
