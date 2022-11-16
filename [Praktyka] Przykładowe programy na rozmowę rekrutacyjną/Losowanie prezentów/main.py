@@ -31,6 +31,23 @@ listaGosci2 = dict(pomieszanaListaGosci)
 dlugoscListy = len(listaGosci)
 
 randomizer = random.sample(range(1, 21), 20)
+wytypowane = [20]
+ok = True
 
-for i in range(dlugoscListy):
-    print(i+1, ":",listaGosci[i+1], "kupuje prezent dla", listaGosci2[randomizer[i]])
+
+def losowanie():
+    licznik = 0
+    global ok
+    while ok:
+        for i in range(dlugoscListy):
+            if listaGosci[i+1] != listaGosci2[randomizer[i]]:
+                licznik += 1
+                if licznik == 20:
+                    print("Na imprezie będzie", licznik, "osób.")
+                    for j in range(dlugoscListy):
+                        if listaGosci[i+1] != listaGosci2[randomizer[i]]:
+                            print(j+1, ":", listaGosci[j+1], "kupuje prezent dla", listaGosci2[randomizer[j]])
+                            ok = False
+
+
+losowanie()
