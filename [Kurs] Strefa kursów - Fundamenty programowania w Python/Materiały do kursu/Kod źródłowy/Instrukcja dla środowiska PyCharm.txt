@@ -1,0 +1,2 @@
+Folder 'KursPython' można zaimportować do środowiska PyCharm i otworzyć, jako projekt. 
+W tym celu wystarczy, że w środowisku PyCharm wybierzemy z menu File -> Open wybierzemy folder KursPython i klikniemy OK. Środowisko PyCharm otworzy ten folder jako projekt środowiska PyCharm, dzięki czemu uzyskamy łatwy dostęp do kodu źródłowego powiązanego z wybranymi lekcjami.
