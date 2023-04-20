@@ -1,0 +1,11 @@
+# plik = open("Plik.txt", 'w')
+# plik.write("Geralt: Mgła gęsta jak mleko...\n")
+# plik.write("Lambert: Obudził się w tobie poeta?")
+# plik.close()
+# plik = open("Plik.txt", 'a')
+# plik.write("\nGeralt: Mhm, chcesz usłyszeć fraszkę?\n")
+# plik.write("Lambert: Pewnie.")
+# plik.close()
+with open("Plik.txt") as plik:
+    zawartosc_pliku = plik.read()
+    print(zawartosc_pliku)
