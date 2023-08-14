@@ -40,6 +40,33 @@ while window.is_open:
 
     board = objectBoard.return_board()
 
+    if sf.Mouse.is_button_pressed(sf.Mouse.LEFT):
+        mousePosition = sf.Mouse.get_possiton()
+    x_mouse_position = mousePosition - window.possition
+
+    if x_mouse_position.x > 0 and x_mouse_position.y > 0:
+        if x_mouse_position.x < 200:
+            if x_mouse_position.y < 200:
+                objectBoard.put_to_board(1, 1)
+            elif x_mouse_position.y < 400:
+                objectBoard.put_to_board(1, 2)
+            else:
+                objectBoard.put_to_board(1, 3)
+        elif x_mouse_position.x < 400:
+            if x_mouse_position.y < 200:
+                objectBoard.put_to_board(2, 1)
+            elif x_mouse_position.y < 400:
+                objectBoard.put_to_board(2, 2)
+            else:
+                objectBoard.put_to_board(2, 3)
+        else:
+            if x_mouse_position.y < 200:
+                objectBoard.put_to_board(3, 1)
+            elif x_mouse_position.y < 400:
+                objectBoard.put_to_board(3, 2)
+            else:
+                objectBoard.put_to_board(3, 3)
+
     # body game
     rectangle_one = sf.RectangleShape()
     rectangle_one.size = (600, 0)
@@ -87,3 +114,5 @@ while window.is_open:
         window.draw(draw_array[element_to_draw])
 
     window.display()
+    mousePosition.x = -1
+    mousePosition.y = -1
